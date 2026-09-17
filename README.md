@@ -190,6 +190,26 @@ To secure domain assets and prevent unauthorized configuration changes by non-ad
 <img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/8175a910-da95-4583-b769-28095a0477c7" />
 
 
+---
+
+## Phase 10: Client Workstation Deployment & Hypervisor Network Alignment
+
+To test group policy inheritance and directory authentication loops, a dedicated workstation asset was introduced into the virtualized environment.
+
+### 1. Workstation Hardware Profile
+- **Operating System:** Windows 10 Pro (Consumer Evaluation Media)
+- **Hostname Target:** Corp-Client01
+- **vRAM Allocation:** 2 GB / vCPU Allocation: 2 Cores
+- **Hypervisor Network Interconnect:** Hard-bound to custom virtual switch layer **`VMnet1 (Host-only)`**. This synchronization locks the workstation into the exact same isolated broadcast domain as the `Corp-DC01` domain controller, setting up local data transit paths.
+
+### 2. Visual Verification
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/6afaedbb-aaba-4900-9cef-6960b0bb2093" />
+
+
+### 3. Next Milestone
+- Configure network adapter settings on the workstation and execute a formal domain join sequence using automated employee accounts.
+
+
 ### 3. Next Milestone
 - Initialize the Windows 10/11 Enterprise client machine, configure network routing parameters, and join the workstation to the active domain forest environment.
 
