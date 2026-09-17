@@ -211,3 +211,25 @@ To test group policy inheritance and directory authentication loops, a dedicated
 
 
 
+---
+
+## Phase 11: Enterprise Domain Integration & Boundary Verification
+
+The client workstation asset has been successfully bound to the secure network zone and integrated into the active directory structure.
+
+### 1. Troubleshooting Case Study: Transmit Failed & Local Interface Disconnection
+- **Issue Encountered:** Validation handshakes yielded an infrastructure failure state, and command-line tracing (`ping`) threw a severe network protocol error: `PING: transmit failed. General failure.`
+- **Root Cause Analysis:** Because the native VMware hypervisor DHCP mechanism was systematically decommissioned in Phase 1 to allow the server to act as the authoritative address pool later, the Windows 10 operating system lacked an IP signature entirely, disabling its local network adapter.
+- **Remediation Action:** Configured temporary explicit static routing fields directly on the workstation client node interface (`IP: 192.168.100.20`, `DNS: 192.168.100.10`), immediately establishing flat data transit paths across the `VMnet1` broadcast lane.
+
+### 2. Verification Specifications
+- **Interface Target:** Automated endpoint `Corp-Client01`
+- **DNS Interconnect Routing:** Configured network adapter properties to route directory namespace lookup requests exclusively through target interface `192.168.100.10`.
+- **Authentication Handshake:** Processed a secure structural handshake using global domain administrator credentials, verifying complete domain alignment across the isolated `corp.local` tree.
+
+### 3. Visual Verification
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/d0d03892-3b26-4677-bed1-943b7f770209" />
+
+
+### 4. Final Milestone
+- Authenticate into the newly joined environment using an automated employee identity profile (`CORP\Alice.Support`) and verify security rule inheritance.
