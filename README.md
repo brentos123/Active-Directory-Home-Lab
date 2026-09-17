@@ -18,8 +18,8 @@ To ensure a safe, self-contained testing environment that mirrors an isolated co
 
 ### 2. Hypervisor Configuration Steps
 1. Launched the **VMware Virtual Network Editor** with Administrator privileges.
-2. Created a dedicated host-only network designation (**VMnet2**) to completely isolate the lab traffic from the local host's physical network and internet interface.
-3. Disabled the native VMware **DHCP service** on VMnet2. This design constraint ensures that the upcoming Windows Server 2016 instance will act as the sole authoritative DHCP server for the domain, mimicking production enterprise standards.
+2. Created a dedicated host-only network designation (**VMnet1**) to completely isolate the lab traffic from the local host's physical network and internet interface.
+3. Disabled the native VMware **DHCP service** on VMnet1. This design constraint ensures that the upcoming Windows Server 2016 instance will act as the sole authoritative DHCP server for the domain, mimicking production enterprise standards.
 
 ### 3. Compute Resource Allocation (Domain Controller)
 The base virtual machine representing the enterprise core was provisioned with the following systems specifications:
