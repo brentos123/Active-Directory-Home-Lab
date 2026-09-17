@@ -210,6 +210,4 @@ To test group policy inheritance and directory authentication loops, a dedicated
 - Configure network adapter settings on the workstation and execute a formal domain join sequence using automated employee accounts.
 
 
-### 3. Next Milestone
-- Initialize the Windows 10/11 Enterprise client machine, configure network routing parameters, and join the workstation to the active domain forest environment.
 
