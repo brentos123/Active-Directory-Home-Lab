@@ -98,3 +98,27 @@ The core directory services framework has been committed and installed to the sy
 ### 3. Next Milestone
 - Promote the standalone `Corp-DC01` server platform to a Root Domain Controller hosting a brand new forest infrastructure.
 
+  ---
+
+## Phase 6: Domain Controller Promotion & Forest Creation
+
+The standalone server platform has been successfully promoted to the authoritative Root Domain Controller for the enterprise forest landscape.
+
+### 1. Troubleshooting Case Study: Password Complexity Constraint
+- **Issue Encountered:** The initial prerequisite check failed with a validation error regarding local Administrator account password requirements.
+- **Root Cause Analysis:** Active Directory password policy parameters demand structural complexity (uppercase, lowercase, numerals, and special characters) before local credentials can be migrated to a global domain administrative context.
+- **Remediation Action:** Launched the local security management console (`lusrmgr.msc`), bypassed the credential hurdle by forcing a reset to a hardened credential pattern (`EnterpriseSupport2026!`), and successfully passed the validation re-scan.
+
+### 2. Forest Configuration Parameters
+1. Established a clean directory forest layout under the functional root domain boundary: **`corp.local`**.
+2. Automated the deployment and integration of the authoritative **Domain Name System (DNS)** server roles to control local zone lookups.
+
+### 3. Visual Verification
+<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/9d4f84c9-f6e7-4a47-803a-83e58784607c" />
+
+
+### 4. Next Milestone
+- Verify domain identity via the new secure network login prompt (`CORP\Administrator`).
+- Implement the Organizational Unit (OU) department layout and begin bulk provisioning user profiles.
+
+
