@@ -59,3 +59,22 @@ The core operating system deployment has concluded, and guest-to-host integratio
 - **OS Environment:** Windows Server 2016 Standard Evaluation (GUI Enabled)
 - **Deployment Status:** In Progress / Finalizing automated reboots.
 - **Next Scheduled Action:** Local administrative security provisioning and static IP schema routing.
+
+---
+
+## Phase 4: Static IP Provisioning & Host Identity Mapping
+
+Before promoting the instance to an authoritative directory controller, network interfaces and host identities were systematically standardized.
+
+### 1. Network Interface Configuration (TCP/IPv4)
+The primary network adapter (`Ethernet0`) was bound to a static architectural schema to prevent IP address drifting and guarantee name resolution reliability:
+- **Assigned IP Address:** `192.168.100.10`
+- **Subnet Mask:** `255.255.255.0`
+- **Default Gateway:** `192.168.100.1`
+- **Preferred DNS Server:** `127.0.0.1` (Local loopback designation pointing to upcoming integrated DNS role)
+
+### 2. System Identity Renaming
+The localized netBIOS hostname was altered to reflect its structural role in the enterprise hierarchy:
+- **Legacy Hostname:** Auto-Generated String (e.g., `WIN-XXXXXX`)
+- **New Standard Hostname:** `Corp-DC01`
+- **Deployment State:** Reboot initiated to finalize host kernel updates.
