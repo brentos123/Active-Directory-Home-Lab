@@ -80,3 +80,21 @@ The localized netBIOS hostname was altered to reflect its structural role in the
 - **Deployment State:** Reboot initiated to finalize host kernel updates.
 - ### 3. Visual Verification Verification
 <img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/49d09961-0830-43ed-8507-a068b0026367" />
+
+---
+
+## Phase 5: Active Directory Domain Services (AD DS) Role Deployment
+
+The core directory services framework has been committed and installed to the system storage array.
+
+### 1. Role Provisioning Parameters
+1. Utilized the Server Manager platform deployment engine to initialize **Active Directory Domain Services (AD DS)**.
+2. Bound essential identity dependencies including remote server administration tools (RSAT) and directory management snap-ins to the kernel framework.
+
+### 2. Visual Verification
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/9c1db3f1-b2eb-4692-98fa-be047a556bd0" />
+
+
+### 3. Next Milestone
+- Promote the standalone `Corp-DC01` server platform to a Root Domain Controller hosting a brand new forest infrastructure.
+
