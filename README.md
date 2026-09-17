@@ -174,3 +174,22 @@ New-ADUser -Name "Sarah.Finance" -SamAccountName "Sarah.Finance" -UserPrincipalN
 
 ### 4. Next Milestone
 - Engineer a Group Policy Object (GPO) baseline to deploy localized workstation restrictions across the domain framework.
+
+---
+
+## Phase 9: Group Policy Object (GPO) Baseline Enforcement
+
+To secure domain assets and prevent unauthorized configuration changes by non-administrative users, an enterprise-wide system restriction policy was engineered.
+
+### 1. Security Baseline Parameters
+- **Policy Object Title:** `GPO_Restrict_Control_Panel`
+- **Target Boundary:** Inherited at the root Domain layer (`corp.local`) affecting all standard authenticated user objects.
+- **Enforced Constraint:** Enabled administrative template restriction rule `Prohibit access to Control Panel and PC settings`. This structural rule hardens workstations by blocking access to structural operating system modification applets (`control.exe`), mitigating the risk of unauthorized local system modifications.
+
+### 2. Visual Verification
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/8175a910-da95-4583-b769-28095a0477c7" />
+
+
+### 3. Next Milestone
+- Initialize the Windows 10/11 Enterprise client machine, configure network routing parameters, and join the workstation to the active domain forest environment.
+
