@@ -28,3 +28,19 @@ The base virtual machine representing the enterprise core was provisioned with t
 - **vCPU Allocation:** 2 Cores
 - **vRAM Allocation:** 4 GB (4096 MB)
 - **Storage Target:** 60 GB Virtual Disk (Stored as a single file)
+
+---
+
+## Phase 2: Core Operating System Deployment
+
+The baseline enterprise operating system framework has been successfully initialized and deployed to storage.
+
+### 1. Installation Timeline & System Parameters
+1. Provisioned **Windows Server 2016 Standard (Desktop Experience)** via virtual media mapping.
+2. Configured the storage controller array using a single partition format on the **60.0 GB virtual disk asset**.
+3. Initialized the localized Windows installation architecture, expanding systems files and applying baseline feature updates.
+
+### 2. Current System State
+- **OS Environment:** Windows Server 2016 Standard Evaluation (GUI Enabled)
+- **Deployment Status:** In Progress / Finalizing automated reboots.
+- **Next Scheduled Action:** Local administrative security provisioning and static IP schema routing.
