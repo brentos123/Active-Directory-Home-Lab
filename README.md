@@ -144,3 +144,33 @@ Moving away from default flat containers, the directory database tree was delibe
 - Implement the Organizational Unit (OU) department layout and begin bulk provisioning user profiles.
 
 
+---
+
+## Phase 8: Directory Provisioning & User Lifecycle Automation via PowerShell
+
+To simulate large-scale enterprise administration and user lifecycle workflows, a targeted PowerShell script was deployed to inject baseline corporate identities into their respective department OUs.
+
+### 1. Automation Execution Parameters
+- **Scripting Environment:** Windows PowerShell Core (Executed as Domain Administrator)
+- **Database Targets:** Distinct organizational units (`OU=IT_Department`, `OU=HR_Department`, `OU=Accounting`)
+- **Security Profile Baseline:** Accounts were systematically generated with explicit User Principal Names (UPNs), initialized with complex seed credentials, and flagged with an administrative constraint forcing an immediate password change upon initial workstation authentication (`-ChangePasswordAtLogon $true`).
+
+### 2. Verified Provisioning Script Code
+```powershell
+\$Pass = ConvertTo-SecureString "EnterpriseSupport2026!" -AsPlainText -Force
+
+New-ADUser -Name "Alice.Support" -SamAccountName "Alice.Support" -UserPrincipalName "Alice.Support@corp.local" -Path "OU=IT_Department,OU=Corporate_HQ,DC=corp,DC=local" -AccountPassword \$Pass -ChangePasswordAtLogon true -Enabled true
+
+New-ADUser -Name "Bob.Admin" -SamAccountName "Bob.Admin" -UserPrincipalName "Bob.Admin@corp.local" -Path "OU=IT_Department,OU=Corporate_HQ,DC=corp,DC=local" -AccountPassword \$Pass -ChangePasswordAtLogon true -Enabled true
+
+New-ADUser -Name "Emma.HR" -SamAccountName "Emma.HR" -UserPrincipalName "Emma.HR@corp.local" -Path "OU=HR_Department,OU=Corporate_HQ,DC=corp,DC=local" -AccountPassword \$Pass -ChangePasswordAtLogon true -Enabled true
+
+New-ADUser -Name "Sarah.Finance" -SamAccountName "Sarah.Finance" -UserPrincipalName "Sarah.Finance@corp.local" -Path "OU=Accounting,OU=Corporate_HQ,DC=corp,DC=local" -AccountPassword \$Pass -ChangePasswordAtLogon true -Enabled true
+```
+
+### 3. Visual Verification
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/8be31348-a965-412e-9fd0-66fb6f2c07ad" />
+
+
+### 4. Next Milestone
+- Engineer a Group Policy Object (GPO) baseline to deploy localized workstation restrictions across the domain framework.
