@@ -118,6 +118,28 @@ The standalone server platform has been successfully promoted to the authoritati
 
 
 ### 4. Next Milestone
+
+---
+
+## Phase 7: Organizational Unit (OU) Tree Architecture & Directory Structuring
+
+To implement scalable Role-Based Access Control (RBAC) across the enterprise environment, a clean, structured Organizational Unit (OU) schema was built.
+
+### 1. Structural Design Matrix
+Moving away from default flat containers, the directory database tree was deliberately segmented to provide localized Group Policy targets and distinct user boundary definitions:
+- **Root OU:** `Corporate_HQ` (Primary headquarters organizational boundary)
+  - `Groups` (Container object dedicated to hosting universal and global security access groups)
+  - `IT_Department` (Container object dedicated to systems administrators, networks teams, and helpdesk support identities)
+  - `HR_Department` (Container object dedicated to human resources staff identities)
+  - `Accounting` (Container object dedicated to financial and bookkeeping roles)
+
+### 2. Visual Verification
+<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/0ca1d9b7-c0fd-4a0e-81b3-f6125d118e96" />
+
+
+### 3. Next Milestone
+- Deploy an automated PowerShell provisioning script to inject bulk user identities into their respective department OUs.
+
 - Verify domain identity via the new secure network login prompt (`CORP\Administrator`).
 - Implement the Organizational Unit (OU) department layout and begin bulk provisioning user profiles.
 
