@@ -78,3 +78,4 @@ The localized netBIOS hostname was altered to reflect its structural role in the
 - **Legacy Hostname:** Auto-Generated String (e.g., `WIN-XXXXXX`)
 - **New Standard Hostname:** `Corp-DC01`
 - **Deployment State:** Reboot initiated to finalize host kernel updates.
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/49d09961-0830-43ed-8507-a068b0026367" />
