@@ -51,7 +51,7 @@ I wanted a self-contained network that couldn't touch my real LAN or the interne
 **Steps:**
 1. Opened the VMware Virtual Network Editor as Administrator.
 2. Created a dedicated host-only network (`VMnet1`) with no bridge to the physical adapter, isolating lab traffic completely.
-3. Disabled VMware's built-in DHCP service on VMnet1 — I wanted the domain controller to be the only DHCP server on the network, like it would be in a real company.
+3. Disabled VMware's built-in DHCP service on VMnet1. I wanted the domain controller to be the only DHCP server on the network, like it would be in a real company.
 
 **Domain controller VM specs:**
 - OS: Windows Server 2016 Standard (Desktop Experience)
@@ -108,7 +108,7 @@ Used Server Manager's "Add Roles and Features" wizard to install AD DS, along wi
 
 ### Issue: password didn't meet complexity requirements
 
-When I ran the promotion wizard, the prerequisite check failed on the local Administrator password — AD requires a mix of uppercase, lowercase, numbers, and special characters before it'll let you promote the account to a domain admin.
+When I ran the promotion wizard, the prerequisite check failed on the local Administrator password, AD requires a mix of uppercase, lowercase, numbers, and special characters before it'll let you promote the account to a domain admin.
 
 **Fix:** reset the local password via `lusrmgr.msc` to something that meets the complexity policy, then re-ran the check and it passed.
 
@@ -125,7 +125,7 @@ When I ran the promotion wizard, the prerequisite check failed on the local Admi
 
 ## Phase 7: Organizational Unit Structure
 
-Rather than dumping every account into the default `Users` container, I built a proper OU structure so I could target Group Policy and permissions by department — the way a real company would.
+Rather than dumping every account into the default `Users` container, I built a proper OU structure so I could target Group Policy and permissions by department, the way a real company would.
 
 ```
 Corporate_HQ
@@ -144,7 +144,7 @@ Corporate_HQ
 
 ## Phase 8: Bulk User Provisioning with PowerShell
 
-Instead of clicking through "New User" four separate times, I wrote a short script to provision accounts into their correct OUs — closer to how this would actually be done at scale.
+Instead of clicking through "New User" four separate times, I wrote a short script to provision accounts into their correct OUs, closer to how this would actually be done at scale.
 
 Each account gets a UPN, a temporary password, and is flagged to force a password change at next logon.
 
@@ -189,7 +189,7 @@ Added a Windows 10 client to test domain join and GPO inheritance.
 - OS: Windows 10 Pro
 - Hostname: `Corp-Client01`
 - 2 vCPU / 2 GB vRAM
-- Network adapter set to `VMnet1 (Host-only)` — same isolated network as the domain controller
+- Network adapter set to `VMnet1 (Host-only)` same isolated network as the domain controller
 
 ### Verification
 ![Phase verification screenshot](https://github.com/user-attachments/assets/6afaedbb-aaba-4900-9cef-6960b0bb2093)
@@ -204,7 +204,7 @@ Added a Windows 10 client to test domain join and GPO inheritance.
 
 `ping` to the DC failed with `PING: transmit failed. General failure.`
 
-**Root cause:** I'd disabled VMware's DHCP service back in Phase 1 so the domain controller could handle DHCP itself — but the DC wasn't yet serving DHCP at this point, so the client had no IP address at all.
+**Root cause:** I'd disabled VMware's DHCP service back in Phase 1 so the domain controller could handle DHCP itself, but the DC wasn't yet serving DHCP at this point, so the client had no IP address at all.
 
 **Fix:** set a temporary static IP on the client (`192.168.100.20`, DNS pointed at `192.168.100.10`) so it could reach the DC and join the domain.
 
@@ -220,7 +220,7 @@ Once connectivity was confirmed, I joined the client to `corp.local` using domai
 ## Phase 12: Verifying the Setup
 
 1. **Logged in as `CORP\Alice.Support`** on the client for the first time and confirmed the forced password change worked as expected.
-2. **Tested the GPO** by trying to open `control.exe` as that user — it was blocked, confirming the policy applies correctly to standard domain users.
+2. **Tested the GPO** by trying to open `control.exe` as that user, it was blocked, confirming the policy applies correctly to standard domain users.
 
 ### Verification
 ![Phase verification screenshot](https://github.com/user-attachments/assets/7406912a-e559-4779-8837-5687eed72107)
